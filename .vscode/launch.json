@@ -1,0 +1,52 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "aggregations-example",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/aggregations-example/bin/Debug/net6.0/aggregations-example.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/aggregations-example",
+            "stopAtEntry": false,
+            "console": "internalConsole",            
+        },
+        {
+            "name": "bulk-insert-example",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bulk-insert-example/bin/Debug/net6.0/bulk-insert-example.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/bulk-insert-example",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+        },
+        {
+            "name": "insert-documents-example",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/insert-documents-example/bin/Debug/net6.0/insert-documents-example.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/insert-documents-example",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+        },
+        {
+            "name": "search-documents-example",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/search-documents-example/bin/Debug/net6.0/search-documents-example.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/search-documents-example",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+        }
+    ]
+}
