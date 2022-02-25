@@ -3,11 +3,33 @@ using Nest;
 
 var connectionSettings = new ConnectionSettings(new Uri("http://localhost:9200"))
         .DefaultIndex("default")
-        //.BasicAuthentication("elastic", "gMFJbCqZR6HFlArw21bd")
-        .ApiKeyAuthentication("ARk2J38BO4QHpYt-7Df1", "GkIpG_uNQtyHX296e7I2WA")
-        .DisableDirectStreaming();
+        .BasicAuthentication("elastic", "gMFJbCqZR6HFlArw21bd");
 
 var client = new ElasticClient(connectionSettings);
 
-var result = await client.SearchAsync<object>(s => s.Index("products").Query(q => q.MatchAll()));
-Console.WriteLine(result.DebugInformation);
+var document = new MyRecord
+{
+    Message = "I'm from .NET",
+    Rating = 4
+};
+
+var response = await client.IndexAsync(document, g => g.Index("mydotnetindex").Id(100));
+
+if (response.IsValid)
+{
+    Console.WriteLine("Insert Succeeded");
+}
+
+var result = await client.SearchAsync<MyRecord>(s => s.Index("mydotnetindex").Query(q => q.MatchAll()));
+
+foreach (var record in result.Documents)
+{
+    Console.WriteLine(record);
+}
+
+
+public record MyRecord
+{
+    public string Message { get; set; }
+    public int Rating { get; set; }
+}

@@ -9,5 +9,21 @@ var connectionSettings = new ConnectionSettings(new Uri("http://localhost:9200")
 
 var client = new ElasticClient(connectionSettings);
 
-var result = await client.SearchAsync<object>(s => s.Index("products").Query(q => q.MatchAll()));
+var result = await client.SearchAsync<MyRecord>(s => s.Index("myindex").Query(q => q.MatchAll()));
+
+foreach (var record in result.Documents)
+{
+    Console.WriteLine(record);
+}
+
+Console.WriteLine();
+Console.WriteLine("##############################################");
+Console.WriteLine();
 Console.WriteLine(result.DebugInformation);
+
+
+public record MyRecord
+{
+    public string Message { get; set; }
+    public int Rating { get; set; }
+}
